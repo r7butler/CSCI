@@ -87,7 +87,7 @@ setMethod("rForest", "oe", function(object){
   if(nrow(object@oesubsample)==0){object <- subsample(object, rand = sample.int(10000, 1))}
   load(system.file("data", "oe_stuff.rdata", package="CSCI"))
   if(is.null(object@predictors$LogWSA))
-    object@predictors$LogWSA <-log10(object@predictors$AREA_SQKM)
+    object@predictors$LogWSA <-log10(object@predictors$AREA_SQKM + 0.0001)
   if(is.null(object@predictors$AREA_SQKM))
     object@predictors$AREA_SQKM <- 10^(object@predictors$LogWSA)
   object@predictors$Log_P_MEAN <-  log10(object@predictors$P_MEAN + 0.0001)
